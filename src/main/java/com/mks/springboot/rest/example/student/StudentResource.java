@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.rest.example.student;
+package com.mks.springboot.rest.example.student;
 
 import java.net.URI;
 import java.util.List;

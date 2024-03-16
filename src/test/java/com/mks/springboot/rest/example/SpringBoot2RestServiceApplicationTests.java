@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.rest.example;
+package com.mks.springboot.rest.example;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
