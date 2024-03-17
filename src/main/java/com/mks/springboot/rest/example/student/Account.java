@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class Student {
+public class Account {
     @Id
     @GeneratedValue
     private Long id;
@@ -14,11 +14,11 @@ public class Student {
 
     private String passportNumber;
 
-    public Student() {
+    public Account() {
         super();
     }
 
-    public Student(Long id, String name, String passportNumber) {
+    public Account(Long id, String name, String passportNumber) {
         super();
         this.id = id;
         this.name = name;

@@ -16,34 +16,34 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-public class StudentResource {
+public class AccountResource {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private AccountRepository accountRepository;
 
-    @GetMapping("/students")
-    public List<Student> retrieveAllStudents() {
-        return studentRepository.findAll();
+    @GetMapping("/accounts")
+    public List<Account> retrieveAllStudents() {
+        return accountRepository.findAll();
     }
 
-    @GetMapping("/students/{id}")
-    public Student retrieveStudent(@PathVariable long id) {
-        Optional<Student> student = studentRepository.findById(id);
+    @GetMapping("/accounts/{id}")
+    public Account retrieveStudent(@PathVariable long id) {
+        Optional<Account> account = accountRepository.findById(id);
 
-        if (student.isEmpty())
-            throw new StudentNotFoundException("id-" + id);
+        if (account.isEmpty())
+            throw new AccountNotFoundException("id-" + id);
 
-        return student.get();
+        return account.get();
     }
 
     @DeleteMapping("/students/{id}")
     public void deleteStudent(@PathVariable long id) {
-        studentRepository.deleteById(id);
+        accountRepository.deleteById(id);
     }
 
     @PostMapping("/students")
-    public ResponseEntity<Object> createStudent(@RequestBody Student student) {
-        Student savedStudent = studentRepository.save(student);
+    public ResponseEntity<Object> createStudent(@RequestBody Account account) {
+        Account savedStudent = accountRepository.save(account);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -55,17 +55,17 @@ public class StudentResource {
 
     }
 
-    @PutMapping("/students/{id}")
-    public ResponseEntity<Object> updateStudent(@RequestBody Student student, @PathVariable long id) {
+    @PutMapping("/accounts/{id}")
+    public ResponseEntity<Object> updateStudent(@RequestBody Account account, @PathVariable long id) {
 
-        Optional<Student> studentOptional = studentRepository.findById(id);
+        Optional<Account> studentOptional = accountRepository.findById(id);
 
         if (studentOptional.isEmpty())
             return ResponseEntity.notFound().build();
 
-        student.setId(id);
+        account.setId(id);
 
-        studentRepository.save(student);
+        accountRepository.save(account);
 
         return ResponseEntity.noContent()
                 .build();
