@@ -36,12 +36,12 @@ public class AccountResource {
         return account.get();
     }
 
-    @DeleteMapping("/students/{id}")
+    @DeleteMapping("/accounts/{id}")
     public void deleteStudent(@PathVariable long id) {
         accountRepository.deleteById(id);
     }
 
-    @PostMapping("/students")
+    @PostMapping("/accounts")
     public ResponseEntity<Object> createStudent(@RequestBody Account account) {
         Account savedStudent = accountRepository.save(account);
 
